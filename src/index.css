@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.right::-webkit-scrollbar{
+    display: none;
+}
+
 
 /* 
 black - 070707
