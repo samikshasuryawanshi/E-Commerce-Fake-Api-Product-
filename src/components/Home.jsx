@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import { useContext } from "react";
 import  {ProductContext} from "../utils/Context"
@@ -7,7 +7,14 @@ import Loading from "../components/Loading";
 const Home = () =>{
 
     const [products , setproducts] = useContext(ProductContext)
-    console.log(products);
+
+    const {search} = useLocation();
+
+    const category = decodeURIComponent(search.split("=")[1]);
+
+    console.log(category);
+    
+    
     
 
     return  ( products ?
