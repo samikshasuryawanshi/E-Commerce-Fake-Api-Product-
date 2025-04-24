@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ProductContext } from '../utils/Context';
 import axios from '../utils/Axios';
 import Loading from './Loading';
+import { toast } from 'react-toastify';
 
 const Details = () => {
   const[products,setproducts] = useContext(ProductContext);
@@ -40,6 +41,7 @@ const Details = () => {
     setproducts(filteredProducts);
     localStorage.setItem("products",JSON.stringify(filteredProducts))
     navigate("/")
+    toast.error("Item is deleted!")
   }
 
 
@@ -110,7 +112,7 @@ const Details = () => {
 
             
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Link className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors transform hover:scale-105">
+              <Link to={`/edit/${product.id}`} className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors transform hover:scale-105">
                 Edit
               </Link>
               <button onClick={() => ProductDeleteHandler(product.id)} className="px-6 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors transform hover:scale-105">
