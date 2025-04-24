@@ -69,36 +69,36 @@ const Create = () =>{
                 Back to Home
             </button>
         
-        <form onSubmit={addProductHandler} className="p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-1/3">
-        <h1 className="text-2xl text-center font-semibold italic mb-5">Add New Product's</h1>
+        <form onSubmit={addProductHandler} className="p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-[90%] md:w-[70%] lg:w-1/3 mx-auto">
+        <h1 className="text-xl md:text-2xl text-center font-semibold italic mb-5">Add New Product's</h1>
         <input 
             onChange={(e) => settitle(e.target.value)}
             value={title}
             type="text"
             placeholder="title"
-            className="text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+            className="text-base md:text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
          />
          <input 
             onChange={(e) => setimage(e.target.value)}
             value={image}
             type="url"
             placeholder="image link"
-            className="text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+            className="text-base md:text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
          />
-         <div className="flex items-center justify-center gap-4">
+         <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full">
             <input 
                 onChange={(e) => setcategory(e.target.value)}
                 value={category}
                 type="text"
                 placeholder="category"
-                className="text-xl  w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+                className="text-base md:text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
             />
             <input 
                 onChange={(e) => setprice(e.target.value)}
                 value={price}
                 type="text"
                 placeholder="price"
-                className="text-xl  w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+                className="text-base md:text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
             />
          </div>
 
@@ -108,10 +108,10 @@ const Create = () =>{
                 type="text"
                 rows="5"
                 placeholder="Description about product..."
-                className="text-lg w-full  mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
+                className="text-base md:text-lg w-full mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
         />
         
-         <button className="p-2 w-1/3 cursor-pointer active:scale-95 bg-blue-600  mt-3 rounded text-lg">Add new Product</button>
+         <button className="p-2 w-full md:w-1/3 cursor-pointer active:scale-95 bg-blue-600 mt-3 rounded text-base md:text-lg">Add new Product</button>
 
         
     </form>

@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
@@ -66,7 +65,7 @@ const Edit = () =>{
         <>
         <button
             onClick={() => navigate('/')}
-            className="mb-8 absolute top-10 left-10 flex items-center cursor-pointer text-blue-400 hover:text-blue-300 transition-colors group"
+            className="mb-4 md:mb-8 absolute top-4 md:top-10 left-4 md:left-10 flex items-center cursor-pointer text-blue-400 hover:text-blue-300 transition-colors group"
             >
             <svg
                 className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"
@@ -84,15 +83,15 @@ const Edit = () =>{
             Back to product
         </button>
     
-        <form onSubmit={addProductHandler} className="p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-1/3">
-                <h1 className="text-2xl text-center font-semibold italic mb-5">Edit Product</h1>
+        <form onSubmit={addProductHandler} className="p-4 md:p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-[95%] md:w-[70%] lg:w-1/3 mx-auto">
+                <h1 className="text-xl md:text-2xl text-center font-semibold italic mb-4 md:mb-5">Edit Product</h1>
                 <input 
                     onChange={changeHandler}
                     value={product && product.title}
                     type="text"
                     name="title"
                     placeholder="title"
-                    className="text-lg w-full mb-3 px-4 py-4 bg-zinc-900 rounded border-none"
+                    className="text-base md:text-lg w-full mb-3 px-4 py-3 md:py-4 bg-zinc-900 rounded border-none"
                 />
                 <input 
                     onChange={changeHandler}
@@ -100,16 +99,16 @@ const Edit = () =>{
                     type="url"
                     name="image"
                     placeholder="image link"
-                    className="text-lg w-full mb-3 px-4 py-4 bg-zinc-900 rounded border-none"
+                    className="text-base md:text-lg w-full mb-3 px-4 py-3 md:py-4 bg-zinc-900 rounded border-none"
                 />
-                <div className="flex items-center justify-center gap-4">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full">
                     <input 
                         onChange={changeHandler}
                         value={product && product.category}
                         type="text"
                         name="category"
                         placeholder="category"
-                        className="text-lg  w-full mb-3 px-4 py-4 bg-zinc-900 rounded border-none"
+                        className="text-base md:text-lg w-full mb-3 px-4 py-3 md:py-4 bg-zinc-900 rounded border-none"
                     />
                     <input 
                         onChange={changeHandler}
@@ -117,7 +116,7 @@ const Edit = () =>{
                         type="text"
                         name="price"
                         placeholder="price"
-                        className="text-lg  w-full mb-3 px-4 py-4 bg-zinc-900 rounded border-none"
+                        className="text-base md:text-lg w-full mb-3 px-4 py-3 md:py-4 bg-zinc-900 rounded border-none"
                     />
                 </div>
 
@@ -128,10 +127,10 @@ const Edit = () =>{
                         rows="5"
                         name="description"
                         placeholder="Description about product..."
-                        className="text-lg w-full  mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
+                        className="text-base md:text-lg w-full mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
                 />
                 
-                <button className="p-2 w-1/3 cursor-pointer active:scale-95 bg-blue-600  mt-3 rounded text-lg">Edit</button>
+                <button className="p-2 w-full md:w-1/3 cursor-pointer active:scale-95 bg-blue-600 mt-3 rounded text-base md:text-lg">Edit</button>
 
                 
         </form>
