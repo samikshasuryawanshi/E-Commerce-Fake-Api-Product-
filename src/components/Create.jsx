@@ -1,20 +1,52 @@
-import { button } from "framer-motion/client";
-import { useState } from "react";
-import { motion } from 'framer-motion';
+
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductContext } from "../utils/Context";
+import {nanoid} from "nanoid"
+
 
 
 
 const Create = () =>{
 
+    const[products,setproducts] = useContext(ProductContext);
+
+
+
     const [title, settitle] = useState("");
     const [image, setimage] = useState("");
-    const [catgeory, setcatgeory] = useState("");
+    const [category, setcategory] = useState("");
     const [price, setprice] = useState("");
     const [description, setdescription] = useState("");
    
 
     const navigate = useNavigate();
+
+    const addProductHandler = (e) =>{
+
+        e.preventDefault();
+
+        if(title.trim().length < 5 || image.trim().length < 5 || category.trim().length < 5 || price.trim().length < 3 || description.trim().length < 5){
+            alert("required all feilds");
+        }
+
+
+
+        const product = {
+            id:nanoid(),
+            title,
+            image,
+            category,
+            price,
+            description
+        }
+
+        setproducts([...products,product]);
+        localStorage.setItem("products",JSON.stringify([...products,product]));
+        navigate("/")
+        // toast.success("new Product Added!")
+
+    }
 
     return (
         <>
@@ -38,36 +70,36 @@ const Create = () =>{
                 Back to Home
             </button>
         
-        <form className="p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-1/3">
+        <form onSubmit={addProductHandler} className="p-5 bg-zinc-800 flex items-center flex-col rounded-xl h-fit w-1/3">
         <h1 className="text-2xl text-center font-semibold italic mb-5">Add New Product's</h1>
         <input 
             onChange={(e) => settitle(e.target.value)}
             value={title}
             type="text"
             placeholder="title"
-            className="text-xl outline-0 w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+            className="text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
          />
          <input 
             onChange={(e) => setimage(e.target.value)}
             value={image}
             type="url"
             placeholder="image link"
-            className="text-xl w-full outline-0 mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+            className="text-xl w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
          />
          <div className="flex items-center justify-center gap-4">
             <input 
-                onChange={(e) => setcatgeory(e.target.value)}
-                value={catgeory}
+                onChange={(e) => setcategory(e.target.value)}
+                value={category}
                 type="text"
                 placeholder="category"
-                className="text-xl outline-0 w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+                className="text-xl  w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
             />
             <input 
                 onChange={(e) => setprice(e.target.value)}
                 value={price}
                 type="text"
                 placeholder="price"
-                className="text-xl outline-0 w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
+                className="text-xl  w-full mb-3 px-4 py-2 bg-zinc-900 rounded border-none"
             />
          </div>
 
@@ -75,11 +107,12 @@ const Create = () =>{
                 onChange={(e) => setdescription(e.target.value)}
                 value={description}
                 type="text"
-                placeholder="Description about product"
-                className="text-lg w-full outline-0 mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
+                rows="5"
+                placeholder="Description about product..."
+                className="text-lg w-full  mb-2 px-4 py-2 bg-zinc-900 rounded border-none"
         />
         
-         <input type="submit" className="p-2 w-1/3 cursor-pointer active:scale-95 bg-blue-600  mt-3 rounded text-xl " />
+         <button className="p-2 w-1/3 cursor-pointer active:scale-95 bg-blue-600  mt-3 rounded text-lg">Add new Product</button>
 
         
     </form>
