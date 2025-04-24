@@ -27,7 +27,7 @@ const Create = () =>{
         e.preventDefault();
 
         if(title.trim().length < 5 || image.trim().length < 5 || category.trim().length < 5 || price.trim().length < 3 || description.trim().length < 5){
-            alert("required all feilds");
+           return alert("required all feilds");
         }
 
 
