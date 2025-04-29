@@ -57,7 +57,7 @@ const Home = () =>{
         }
     }, [category, products]);
 
-    return ( products ?
+    return ( 
         <div className="flex flex-col md:flex-row w-full h-screen overflow-hidden bg-zinc-900">
             <Nav />
             <motion.div
@@ -123,7 +123,6 @@ const Home = () =>{
                 </AnimatePresence>
             </motion.div>
         </div>
-        : <Loading />
     ) 
 }
 
